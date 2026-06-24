@@ -4,7 +4,7 @@ A professional portfolio of C++ **special judges (checkers)** for competitive
 programming problems with multiple valid outputs — the kind of work done on
 Codeforces, Polygon, and ICPC judge systems.
 
-[![CI](https://github.com/yourusername/competitive-programming-checker-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/competitive-programming-checker-lab/actions)
+[![CI](https://github.com/Progamesl/competitive-programming-checker-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/Progamesl/competitive-programming-checker-lab/actions)
 
 ---
 
@@ -245,7 +245,7 @@ partition and its weight.
 ### Build
 
 ```bash
-git clone https://github.com/yourusername/competitive-programming-checker-lab
+git clone https://github.com/Progamesl/competitive-programming-checker-lab
 cd competitive-programming-checker-lab
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --parallel
