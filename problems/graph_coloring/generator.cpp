@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <iostream>
 #include <random>
+#include <string>
 #include <vector>
 
 int main(int argc, char** argv) {
