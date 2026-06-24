@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  build-and-test:
+    name: Build & Test (Ubuntu)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y cmake g++ python3
+
+      - name: Configure CMake (Release)
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build all targets
+        run: cmake --build build --parallel
+
+      - name: Run checker test suite
+        run: python3 scripts/run_all_tests.py --build-dir build
+
+      - name: Run fuzz smoke test
+        run: python3 scripts/fuzz_problem.py --build-dir build --iters 20
+
+  build-windows:
+    name: Build (Windows / MSVC)
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build all targets
+        run: cmake --build build --config Release
+
+      - name: Run checker test suite
+        run: python scripts/run_all_tests.py --build-dir build/Release
